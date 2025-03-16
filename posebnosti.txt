@@ -1,16 +1,40 @@
-Tehnične Zahteve in Posebnosti Implementacije
+Tehnične Zahteve in Posebnosti Implementacije (Frontend)
 
-Tehnološki Stack:
-   Node.js za strežniško logiko in posredovanje vsebine.
-   HTML, CSS in JavaScript za odjemalski vmesnik.
-   Service Worker za omogočanje delovanja brez povezave.
+1. Tehnologije(Frontend)
 
-Zahteve za Naprave:
-   Čeprav aplikacija deluje brez povezave, potrebuje začetni dostop do interneta za prenos podatkov.
-   Naprava mora podpirati JavaScript in PWA standarde.
-   Za uporabo kamere mora imeti naprava ustrezno strojno in programsko podporo.
+Za razvoj in delovanje odjemalskega dela aplikacije uporabljamo naslednje tehnologije:
 
- Omejitve:
-   Za delovanje nekaterih funkcij (npr. glasovno iskanje) je potrebna podpora API-jem brskalnika.
-   Recepti so shranjeni lokalno, vendar sinhronizacija v oblaku trenutno ni podprta.
-   Aplikacija omogoča uporabo kamere za slikanje jedi, vendar mora uporabnik odobriti dostop do kamere.
+    HTML5 – Ustvarjanje osnovne strukture uporabniškega vmesnika.
+    CSS – Oblikovanje in prilagajanje vizualnega izgleda aplikacije.
+    JavaScript – Logika interakcije s strani uporabnika, manipulacija DOM-a in upravljanje podatkov.
+    Podatkovna baza za shranjevanje preprostih receptov. 
+
+Dodatne knjižnice in orodja:
+
+    Frontend knjižnjice: React.js, Vue.js ali pa Svelte.js
+    UI Knjižnice:  Tailwind CSS
+    PWA Podpora: Manifest datoteka (manifest.json) za omogočanje PWA funkcionalnosti.
+
+2. Zahteve za Naprave
+
+Za pravilno delovanje aplikacije mora naprava izpolnjevati naslednje pogoje:
+
+    Podpora za PWA:
+        Brskalnik mora podpirati Progressive Web App (PWA) standarde, da aplikacija deluje kot samostojna aplikacija in omogoča namestitev na začetni zaslon.
+
+    Dostop do kamere (za funkcijo slikanja jedi):
+        Naprava mora imeti kamero.
+        Uporabnik mora dovoliti dostop do kamere, sicer funkcija ne bo delovala.
+
+3. Omejitve 
+
+Pri uporabi aplikacije so določene omejitve:
+
+    Delo brez povezave:
+        Uporabnik mora najprej obiskati aplikacijo z aktivno internetno povezavo, da se prenesejo potrebni viri (HTML, CSS, JS in podatki o receptih).
+        Če uporabnik ob prvem obisku nima dostopa do interneta, aplikacija ne bo delovala.
+
+    Varnost in dovoljenja:
+        Aplikacija zahteva dovoljenje za dostop do kamere. Če uporabnik zavrne dovoljenje, funkcija slikanja jedi ne bo na voljo.
+        Brskalniki lahko omejijo dostop do nekaterih funkcij (npr. kamera deluje le prek HTTPS ali na lokalnem strežniku).
+

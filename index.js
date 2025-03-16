@@ -5,7 +5,10 @@ const path = require('path');
 const server = http.createServer((req, res) => {
     console.log(`Zahteva prejeta: ${req.url}`);
 
-    if (req.url === '/funkcionalnosti-odjemalca/') {
+    if (req.url === '/') {
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Pozdravljeni na spletni strani!');
+    } else if (req.url === '/funkcionalnosti-odjemalca/') {
         serveHTML(res, 'funkcionalnosti.html');
     } else if (req.url === '/posebnosti/') {
         serveText(res, 'posebnosti.txt');
@@ -15,6 +18,7 @@ const server = http.createServer((req, res) => {
         res.writeHead(404, { 'Content-Type': 'text/plain' });
         res.end('Stran ni najdena');
     }
+
 });
 
 function serveHTML(res, filename) {
