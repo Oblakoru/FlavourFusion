@@ -1,0 +1,16 @@
+Tehnične Zahteve in Posebnosti Implementacije
+
+Tehnološki Stack:
+   Node.js za strežniško logiko in posredovanje vsebine.
+   HTML, CSS in JavaScript za odjemalski vmesnik.
+   Service Worker za omogočanje delovanja brez povezave.
+
+Zahteve za Naprave:
+   Čeprav aplikacija deluje brez povezave, potrebuje začetni dostop do interneta za prenos podatkov.
+   Naprava mora podpirati JavaScript in PWA standarde.
+   Za uporabo kamere mora imeti naprava ustrezno strojno in programsko podporo.
+
+ Omejitve:
+   Za delovanje nekaterih funkcij (npr. glasovno iskanje) je potrebna podpora API-jem brskalnika.
+   Recepti so shranjeni lokalno, vendar sinhronizacija v oblaku trenutno ni podprta.
+   Aplikacija omogoča uporabo kamere za slikanje jedi, vendar mora uporabnik odobriti dostop do kamere.
