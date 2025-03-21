@@ -1,0 +1,37 @@
+Tehnične Zahteve in Posebnosti Implementacije (Frontend)
+
+1. Tehnologije
+
+Za razvoj in delovanje odjemalskega dela aplikacije uporabljamo naslednje tehnologije:
+
+    HTML5 – Ustvarjanje osnovne strukture uporabniškega vmesnika.
+    CSS – Oblikovanje in prilagajanje vizualnega izgleda aplikacije.
+    JavaScript – Logika interakcije s strani uporabnika, manipulacija DOM-a in upravljanje podatkov.
+    Podatkovna baza za shranjevanje preprostih receptov. 
+
+Dodatne knjižnice in orodja:
+
+    Frontend knjižnjice: React.js, Vue.js ali pa Svelte.js
+    UI Knjižnice:  Tailwind CSS
+    PWA Podpora: Manifest datoteka (manifest.json) za omogočanje PWA funkcionalnosti.
+
+2. Zahteve za Naprave
+
+Za pravilno delovanje aplikacije mora naprava izpolnjevati naslednje pogoje:
+
+    Dostop do kamere (za funkcijo slikanja jedi):
+        Naprava mora imeti kamero.
+        Uporabnik mora dovoliti dostop do kamere, sicer funkcija ne bo delovala.
+
+3. Omejitve 
+
+Pri uporabi aplikacije so določene omejitve:
+
+    Delo brez povezave:
+        Uporabnik mora najprej obiskati aplikacijo z aktivno internetno povezavo, da se prenesejo potrebni viri (HTML, CSS, JS in podatki o receptih).
+        Če uporabnik ob prvem obisku nima dostopa do interneta, aplikacija ne bo delovala.
+
+    Varnost in dovoljenja:
+        Aplikacija zahteva dovoljenje za dostop do kamere. Če uporabnik zavrne dovoljenje, funkcija slikanja jedi ne bo na voljo.
+        Brskalniki lahko omejijo dostop do nekaterih funkcij (npr. kamera deluje le prek HTTPS ali na lokalnem strežniku).
+
