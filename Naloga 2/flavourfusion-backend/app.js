@@ -10,6 +10,7 @@ const path = require("path");
 const recipesRoutes = require("./routes/recipes");
 const usersRoutes = require("./routes/users");
 const shoppingRoutes = require("./routes/shopping");
+const indexRoute = require("./routes/index");
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
+app.use("/", indexRoute);
 app.use("/recipes", recipesRoutes);
 app.use("/users", usersRoutes);
 app.use("/shopping_list", shoppingRoutes);
