@@ -113,17 +113,39 @@ async function testAPI() {
     console.log("\n🛒 Dodajanje sestavine v nakupovalni seznam...");
     res = await axios.post(`${API_URL}/shopping_list`, { item: "Parmezan" });
     console.log("✅ Dodano:", res.data);
+    const shoppingItem = res.data; 
 
     console.log("\n🛍️ Pridobivanje nakupovalnega seznama...");
     res = await axios.get(`${API_URL}/shopping_list`);
     console.log("📝 Nakupovalni seznam:", res.data);
 
+    console.log("\n📝 Posodabljanje nakupovalnega seznama...");
+    res = await axios.put(`${API_URL}/shopping_list/${shoppingItem.id}`, { item: "Ribani sir" });
+    console.log("✅ Posodobljeno:", res.data);
+
+    console.log("\n🛍️ Pridobivanje posodobljenega nakupovalnega seznama...");
+    res = await axios.get(`${API_URL}/shopping_list`);
+    console.log("📋 Posodobljen seznam:", res.data);
+
+    console.log("\n🗑️ Brisanje sestavine iz nakupovalnega seznama...");
+    res = await axios.delete(`${API_URL}/shopping_list/${shoppingItem.id}`);
+    console.log("✅ Izbrisano:", shoppingItem.id);
+
+    console.log("\n🛍️ Končno preverjanje nakupovalnega seznama...");
+    res = await axios.get(`${API_URL}/shopping_list`);
+    console.log("📋 Končni seznam:", res.data);
+
+    // Registracija uporabnika
+    const user = { username: "testuser", password: "testpass" };
     console.log("\n👤 Registracija novega uporabnika...");
-    res = await axios.post(`${API_URL}/users/register`, {
-      username: "testuser",
-      password: "testpass"
-    });
+    res = await axios.post(`${API_URL}/users/register`, user);
     console.log("✅ Registracija uspešna:", res.data);
+
+    // Prijava uporabnika
+    console.log("\n🔑 Prijava uporabnika...");
+    res = await axios.post(`${API_URL}/users/login`, user);
+    console.log("✅ Prijava uspešna:", res.data);
+
   } catch (error) {
     console.error("\n❌ Napaka:", error.response ? error.response.data : error.message);
   }
