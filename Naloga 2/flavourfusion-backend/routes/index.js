@@ -13,6 +13,7 @@ router.post("/reset_db", (req, res) => {
       db.run("DELETE FROM recipes;");
       db.run("DELETE FROM shopping_list;");
       db.run("DELETE FROM users;");
+      db.run("DELETE FROM sqlite_sequence WHERE name IN ('recipes', 'shopping_list', 'users');");
       db.run("PRAGMA foreign_keys = ON;"); 
   });
 
