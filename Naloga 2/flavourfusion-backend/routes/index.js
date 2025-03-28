@@ -1,13 +1,13 @@
 var express = require('express');
 var router = express.Router();
 const db = require("../database");
-
+const { authenticateToken, isAdmin } = require("../middleware/auth");
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.post("/reset_db", (req, res) => {
+router.post("/reset_db", authenticateToken, isAdmin, (req, res) => {
   db.serialize(() => {
       db.run("PRAGMA foreign_keys = OFF;");
       db.run("DELETE FROM recipes;");
@@ -17,7 +17,7 @@ router.post("/reset_db", (req, res) => {
       db.run("PRAGMA foreign_keys = ON;"); 
   });
 
-  res.json({ message: "Database reset successful" });
+  res.json({ message: "Baza je bila uspešno ponastavljena!" });
 });
 
 

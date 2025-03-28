@@ -1,7 +1,7 @@
 const express = require("express");
 const db = require("../database");
 const router = express.Router();
-
+const { authenticateToken, isAdmin } = require("../middleware/auth");
 
 
 // Iskanje receptov po sestavinah
@@ -31,7 +31,6 @@ router.get("/search", (req, res) => {
 });
 
 
-
 // Pridobi vse recepte
 router.get("/", (req, res) => {
   db.all("SELECT * FROM recipes", [], (err, rows) => {
@@ -50,9 +49,8 @@ router.get("/:id", (req, res) => {
 
 });
 
-
 // Dodaj recept
-router.post("/", (req, res) => {
+router.post("/", authenticateToken, (req, res) => {
   const { name, ingredients, instructions, dietary } = req.body;
   db.run(
     "INSERT INTO recipes (name, ingredients, instructions, dietary) VALUES (?, ?, ?, ?)",
@@ -65,7 +63,7 @@ router.post("/", (req, res) => {
 });
 
 // Izbriši recept
-router.delete("/:id", (req, res) => {
+router.delete("/:id", authenticateToken, (req, res) => {
   db.run("DELETE FROM recipes WHERE id = ?", req.params.id, function (err) {
     if (err) return res.status(500).json({ error: err.message });
     res.json({ deletedID: req.params.id });
